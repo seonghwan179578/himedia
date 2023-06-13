@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.bj2.mappers.TimeMapper">
+
+    <select id="getTime" resultType="string">
+        select now()
+    </select>
+</mapper>
+<!-- 강사님 git에서 mybatis branch로 전환한 후 해당 파일 복붙한 후에 라인6의 zerock.과 mappers 사이의 이름을 bj2로 변경. 패키지 이름이 bj2이기 때문 -->

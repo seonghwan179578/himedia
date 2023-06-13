@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmin:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 th:text="${123 % 2 == 0 ? '홀수' : '짝수'}">Hello World</h1>  <!-- ${} 안에 있는 게 답이므로 출력하면 짝수 출력 --> <!-- 이엘 안에 들어가는 건 식이면 다 된다 -->
+    <h1>[[${123 % 2 == 0 ? '!홀수' : '짝수'}]]</h1> <!-- 짝수 출력. 바로 위의 h1태그와 같은 셈 --> <!-- h1 두 가지 중 한 가지 방식을 택해야 함. 수업 중에는 아래 케이스 사용 -->
+
+    <h1>[[${result}]]</h1>
+
+    <script th:inline="javascript"> // 자동으로 javascript 타입으로 바꿔줌
+        const result = '[[${result}]]'
+    </script>
+
+</body>
+</html>

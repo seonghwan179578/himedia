@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서객체 다루기</title>
+    <script>
+
+        // window.onload = function() {
+        // // 선택자의 종류 => *, h1, .클래스, #아이디, 부모 > 자식(바로 위아래 관계), 조상 후손, + 등
+        // let h1Obj = document.querySelector('h1'); 
+        // console.log(h1Obj, typeof h1Obj)
+        // }
+
+        // 이벤트 설정
+        document.addEventListener('DOMContentLoaded', () => {
+
+
+            let head = document.head
+            console.log(head)
+            let body = document.body
+            console.log(body)
+            let title = document.title
+            console.log(title) // title이 문서객체 다루기 이므로 문서객체 다루기 출력
+
+            let sTitle = document.getElementById("title")
+            console.log(sTitle) // <h3 id="title">문서객체 조작</h3>가 출력됨
+
+            // 문서 객체 생성 : 캐스팅(이라고 함)
+            let h1 = document.querySelector('h1') // queryselector : 위에서부터 쭉 내려가면서 가장 먼저 있는 태그를 반환
+            console.log(h1, typeof h1) // 객체를 생성한 것이기 때문에 object
+
+            console.log('h1.textContent => ', h1.textContent) // textContent => 태그를 제외하고 text만 가져옴 ∴ '안녕하세요'만 출력
+            h1.textContent = 'HEADER 1'
+            console.log('h1.innerHTML => ', h1.innerHTML)
+            // h1.innerHTML = '<a href="#">안녕</a>' // 속성 => 화면을 변경
+
+            // 스타일 조작
+            h1.style.color = 'yellow' // color : 글자색
+            h1.style.backgroundColor = 'blue' // 배경색 변경
+            h1.style.padding = '10px'
+            h1.style.margin = '0px'// margin : 객체와 객체간, 객체와 border간  거리
+            h1.style.fontSize = '11px' // 글자 크기 변경
+
+            let h3 = document.querySelector('#title') // <h3 id="title">문서객체 조작</h3> => 이거 캐스팅 
+            h3.style.fontSize = '32px'
+            h3.style.backgroundColor = 'black'
+            h3.style.color = 'white'
+
+
+            let headers = document.querySelectorAll('h1') // 여러 개의 요소를 1번에 처리
+            console.log(headers)
+            headers.forEach((item) => {
+                console.log(item.textContent)
+            })
+
+
+            // tag가 가지는 속성 조작
+            let link = document.querySelector('#linkNaver')
+            let href = link.getAttribute('href')
+            console.log('href', href)
+            link.setAttribute('href', 'https://www.google.com') // 네이버 하이퍼링크 클릭하면 구글로 이동
+            link.setAttribute('link-index', 1)
+
+
+            let index = link.getAttribute('link-index')
+            console.log('index', index)
+
+            // 동적 요소 생성 -> 추가
+            // 동적 생성
+            let newElement = document.createElement('h2')
+            newElement.textContent = '동적으로 생성한 h2'
+            newElement.style.backgroundColor = 'yellow'
+            newElement.style.color = 'red'
+            
+            // 부모 엘리먼트 생성[캐스팅]
+            let wrap = document.querySelector('#wrap')
+
+            // 새로운 요소 추가
+            wrap.appendChild(newElement) // 자식 태그 넣기
+
+            // 이미지 태그 추가
+            let newImg = document.createElement('img')
+            newImg.setAttribute('src', 'image/vscode 경로.PNG') // 추가하려는 이미지 파일의 경로
+            newImg.setAttribute('width', '200')
+
+            wrap.appendChild(newImg)
+
+            // 엘리먼트의 삭제
+            // 부모 엘리먼트의 removeChild(target Object)
+            let bodyEl = document.body
+
+            // 삭제 대상 캐스팅
+            let removeTarget = document.querySelector('h1.footer') // h1 태그 중에 footer를 가진 속성이라고 한정을 지음 // 
+
+            // 삭제
+            bodyEl.removeChild(removeTarget) // <h1 class="footer">안녕하세요 - 4</h1> 가 삭제되어서 안녕하세요 - 4 삭제
+
+        })
+
+    </script>
+</head>
+
+<body>
+
+    <div id="wrap">
+        
+    </div>
+
+    <h2>
+        <a href="https://naver.com" id="linkNaver">네이버(?)</a>
+    </h2>
+
+
+    <h3 id="title">문서객체 조작</h3>
+
+    <h1><i>안녕하세요</i></h1>
+    <h1>안녕하세요 - 1</h1>
+    <h1>안녕하세요 - 2</h1>
+    <h1>안녕하세요 - 3</h1>
+    <h1 class="footer">안녕하세요 - 4</h1>
+
+</body>
+
+</html>

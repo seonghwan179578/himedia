@@ -1,0 +1,47 @@
+1. 회원 가입 => 파일 업로드
+ 수정 리스트, 삭제(직접)
+
+입력 받을 데이터
+uid, pw, uname, uphoto
+
+
+2. 로그인 : 
+
+	/login : get | post
+
+
+
+인터셉터 : /board/** <=세션을 확인
+
+3. tbl_board=> 컬럼추가 idx 외래키
+ Member 테이블의 idx 참조
+
+--
+
+4. 게시물 작성시 idx에는 로그인 한 사용자의 idx값을 입력
+
+- form에서 전달되는 파라미터 
+- 커멘드 객체 수정
+- mapper XML isnert tag 변경
+- 글작성 테스트 
+
+
+--
+
+
+5. 게시물의 리스트 => tbl_board와 member 테이블Join
+
+--
+
+6. 상세보기(뷰 페이지) => 작성자의 idx와 로그인한 사용자의 idx를 비교 
+		=> 수정, 삭제
+
+
+7. 수정 페이지
+- form 수정 : writer 부분 삭제
+- 커멘드 객체 변수 삭제
+- mapper XML 변경 -> writer 부분 삭제
+- 테스트
+
+
+

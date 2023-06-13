@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // window.open() // target : window 이름을 말함
+        // window.open('', 'newWindow') 
+        // window.open('https:/www.naver.com', 'new', 'width=400, height=300') // 브라우저 전체가 아닌 주소창 아래의 흰 부분에 한한 크기
+
+        // let child = window.open('', 'child', 'width=300, height=300') // open 바로 옆의 ''에는 도메인 주소를 입력하면 됨(https://naver.com 등) // child : 현재 window 객체
+
+        // child.document.write('<h1>부모 윈도우에 만든 텍스트를 동적으로 추가</h1>') // write => 부모 윈도우에 만든 텍스트를 동적으로 추가
+        // child.document.write('<h1 onclick="self.close();"> 윈도우 닫기 </h1>') // 윈도우 닫기라는 텍스트를 클릭해서 창을 닫을 수 있다
+
+
+        window.onload = function () { // 이 함수는 html이 끝나고 마지막에 실행된다
+            console.log('페이지 로드 완료!!!!')
+
+
+            console.log('window.open()...')
+
+            console.log(location) // f12 console 창에서 f라고 나오는 건 함수를 말함
+            console.log(navigator)
+            console.log(screen) // 화면에 대한 사이즈 등을 확인 가능
+            console.log(history) // history.back() -> 이전페이지로 // history.forward() -> 다음페이지로 // history.go(n) -> n번 앞(혹은 뒤로) 페이지로(음수면 뒤로, 양수면 앞으로) 
+
+            document.querySelector('h1')
+
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('문서객체를 모두 읽으면 이벤트가 발생하고 콜백함수를 호출한다.')
+        });
+
+
+
+
+
+
+
+
+        function delMsg(bno) { // del = delete
+            if (confirm('삭제하시겠습니까?')) {
+                location.href = 'http://localhost:8080/board/delete?bno=' + bno // location 객체의 href 속성
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <a href="javascript:delMsg(10);">삭제</a>
+    <a href="tel:010-9999-7777">010-1111-1111</a>
+
+    <h1>test</h1>
+
+</body>
+
+</html>

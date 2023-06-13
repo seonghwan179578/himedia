@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let usrName = 'cool'
+
+        
+
+
+
+        localStorage.setItem('userName', usrName) // key에 userName, value에 cool 나타남
+
+        let userId = localStorage.getItem('userId')
+        console.log(userId)
+
+        localStorage.removeItem('userName')
+
+        localStorage.clear() // LocalStorage의 모든 key값, value값이 사라짐
+
+        let option = {
+            type : 'AAAA',
+            count : 1,
+            check : false
+        }
+
+        localStorage.setItem('option', JSON.stringify(option))
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

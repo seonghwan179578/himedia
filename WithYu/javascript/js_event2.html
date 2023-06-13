@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let memo
+        let cnt
+
+        document.addEventListener('DOMContentLoaded', ()=>{
+            // 글자 수 체크 : keyup 이벤트 사용
+            meno = document.querySelector('#memo') // 이벤트 적용 대상
+            cnt = document.querySelector('#cnt') // 결과 출력 목적
+
+            memo.addEventListener('keyup', memoListener)
+
+        //     memo.addEventListener('keyup', ()=> {
+        //         console.log(meno.value)
+        //         let memoStr = memo.value
+        //         const len = memo.value.length // len -> length
+        //         if(len > 20) {
+        //             alert('20자 이하로만 쓰기 가능합니다.')
+        //             memo.value = memoStr.substring(0, 20) // substring : 입력 가능한 글자 수를 제한. 하지만 하단의 글자 수에 나타나는 숫자를 계속 증가하기 때문에 아래의 len = 20을 추가해야 한다
+        //             len = 20 // 글자 수가 최대 20으로 표시. 21로 넘어가지 않게 함
+        //         }
+        //         cnt.textContent = `글자 수 : ${len}`
+
+        //     })
+
+
+        })
+
+        const memoListener = function(event){
+
+            // event.currentTarget 이벤트가 발생한 문서 객체
+            let memoObj = event.currentTarget
+
+            // console.log(meno.value)
+            console.log(memoObj.value)
+
+            // let memoStr = memo.value
+            let memoStr = memoObj.value
+
+            //    const len = memo.value.length // len -> length
+            const len = memoStr.length
+    
+                if(len > 20) {
+                    alert('20자 이하로만 쓰기 가능합니다.')
+                    // memo.value = memoStr.substring(0, 20) // substring : 입력 가능한 글자 수를 제한. 하지만 하단의 글자 수에 나타나는 숫자를 계속 증가하기 때문에 아래의 len = 20을 추가해야 한다
+                    memoObj.value = memoStr.substring(0, 20)
+                    len = 20 // 글자 수가 최대 20으로 표시. 21로 넘어가지 않게 함
+                }
+                cnt.textContent = `글자 수 : ${len}`
+        }
+    
+
+    </script>
+</head>
+<body>
+    
+    <h1>키보드 이벤트</h1>
+    <textarea id="memo"></textarea>
+    <h4 id="cnt">글자 수 : </h4>
+
+
+</body>
+</html>

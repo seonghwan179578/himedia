@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function callbackFn(n1, n2, callback){
+        return callback( n1, n2 ); // 매개변수 n1, n2, callback을 가진 함수 callbackFn이 callback(n1, n2)를 리턴하는데 
+        }                          // callback은 callbackFn의 매개변수이지만, callback 자체로는 함수의 성격 역시 지님으로써 10, 20이라는 매개변수를 다시 획득
+        console.log(               // 화살표 함수 기능을 통해 a+b라는 리턴값을 다시 적용
+        callbackFn(                // ∴ 최종적으로 출력될 내용은 a+b
+        10,                        // a=10, b=20 => 10+20=30
+        20,
+        (a,b)=>a+b 
+        )        
+         )
+        </script>
+        
+</head>
+<body>
+    
+</body>
+</html>

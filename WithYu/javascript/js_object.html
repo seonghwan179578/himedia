@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let menu = { // productName, price, ctgy가 속성에 해당
+            productName: 'Americano',
+            price: 3000,
+            ctgy: 'Coffee',
+            makeCoffee: function () { // 화살표 함수에서는 this를 쓸 수 없다
+                console.log(`${this['productName']}는 원두 20g과 뜨거운 물 120ml를 섞어서 만듭니다.`)
+            },
+            etc: [],
+            like: {}
+        }
+
+
+
+        console.log(menu, typeof menu) // typeof에서 괄호 생략 가능
+        console.log('주문 메뉴 ', menu.productName)
+        console.log('주문 가격 ', menu['price'])
+
+        // 객체의 메소드 호출
+        menu.makeCoffee()
+
+        // 동적 속성 추가
+        // {} 필요한 속성들을 추가 => 객체이름.속성이름 = 데이터
+        menu.event = false
+
+        console.log(menu)
+
+        // if(menu.event) { // event가 false이므로 else 출력
+        //     alert('할인 이벤트 진행중!!!!')
+        // } else {
+        //     alert('이벤트 대상 상품이 아닙니다.')
+        // }
+
+        // 동적으로 속성을 제거
+        delete menu.event
+        console.log('속성 제거', menu) // 실행하면 이벤트가 삭제된 채 출력
+
+
+        /////////////////////////////////////////////
+        // 기본형 데이터의 일시적 승급 => 기본형 데이터를 잠시 객체로 변환
+
+        let num = 100;
+        console.log(num.toString(), typeof num)
+
+        let numObj = new Number(100)
+        console.log(numObj.toString(), typeof numObj)
+
+
+        // prototype을 이용한 공통 메소드 추가
+        // 이걸 쓰는 이유는 => 불필요한 메소드 코드를 메모리에 저장하지 않기 위한 방법
+        // 필요한 메소드 코드 하나만 등록하고 활용할 목적
+        // 객체 타입.prototype.속성이름.function(){}
+
+        Number.prototype.nickname = 'KING'
+        Number.prototype.tell = function () { console.log('안녕하세요') }
+
+        let num2 = 10;
+        console.log(num2.nickname)
+        num2.tell()
+
+        // 기본객체 타입
+        // Number, String, Array, Date, JSON, Math
+
+        let num3 = 3.141592
+        console.log(num3, num3.toFixed(2)) // 소수 둘째 자리까지 표현
+
+        let numObj3 = new Number(3.141592)
+        console.log(numObj3.toString(), numObj3.toFixed(2))
+
+        console.log(isNaN(num3))
+
+        // String 객체
+        let str1 = '   안녕하세요'
+        console.log(str1, str1.trim(), str1.length) // 공백문자 때문에 length는 8 출력
+
+        let str2 = '010-9999-7777'
+        let phoneNumbers = str2.split('-') // '-' 로 구분하여 출력
+        console.log('phoneNumbers', phoneNumbers)
+
+        // JSON
+        // JSON 객체는 자바스크립트의 객체를 제잉슨 형식의 문자열로 변경해줌
+        // 반대로 제이슨 형식의 문자열은 자바스크립트에서 사용할 수 있는 객체(obj)로 변경해줌
+
+
+        let person = { // 자바스크립트의 객체 형식
+            name: 'SON',
+            age: 30
+        }
+        // obj -> string
+        let strJson = JSON.stringify(person) // 문자열로 변환
+
+        console.log('--------------------------')
+        console.log(person, typeof person)
+        console.log(strJson, typeof strJson)
+
+        // string -> obj
+        let jsonObj = JSON.parse(strJson) // 객체로 반환
+        console.log(jsonObj, typeof jsonObj)
+
+
+        // [] : 배열
+        // Array
+        // new Array() -> 내용이 없는 배열 생성
+        // new Array(숫자) -> 숫자 만큼의 사이즈[공간]로 배열을 생성
+        // new Array(1, 2, 3, 4, 5) -> [1, 2, 3, 4, 5]
+
+        let arr1 = [1, 2, 3, 4, 5]
+        let arr2 = new Array()
+        let arr3 = new Array(10)
+        let arr4 = new Array(1, 2, 3, 4, 5)
+
+        console.log(arr1)
+        console.log(arr2)
+        console.log(arr3)
+        console.log(arr4)
+
+        // Date : 날짜 관련
+        const now = new Date()
+
+        console.log('현재 시간', now.getHours())
+
+        // Math : 수학 관련 
+        console.log(Math.floor(3.14)) // floor : 소수점 절삭
+        console.log(Math.random()) // random : 0이상 1미만 랜덤 숫자 출력
+
+
+
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
